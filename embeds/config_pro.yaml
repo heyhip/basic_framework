@@ -1,0 +1,88 @@
+# 应用
+App:
+  Host: 0.0.0.0 # 监听地址
+  Port: 8888 # 端口
+  ReadTimeout: 20 # 读超时时间，秒
+  WriteTimeout: 20 # 写超时时间，秒
+  MaxHeaderBytes: 0 # 请求最大字节数，0为默认DefaultMaxHeaderBytes大小1MB
+  Pprof: localhost:6060 # pprof性能分析工具地址
+  StaticsUrl: http://xxx.xxx.com # 静态文件地址
+
+# 限制
+Auth:
+  Enable: false # 是否开启
+  Ip: ["::1", "127.0.0.1"] # 允许访问ip
+
+# 时间戳格式化
+TimeFomat:
+  Y_M_D_H_I_S: 2006-01-02 15:04:05
+  Y_M_D: 2006-01-02
+  YMD: 20060102
+  YM: 200601
+
+# 日志
+Log:
+  Prefix: xxx
+  Suffix: log
+  Path: logs
+  Level: debug # debug or error
+
+# 数据库
+Db:
+  Type: mysql
+  Host: 127.0.0.1
+  Username: xxx
+  Password: xxx
+  Port: 3306
+  Database: xxx
+  Prefix: xxx_
+
+# redis
+Redis:
+  Host: 127.0.0.1
+  Port: 6379
+  Auth: xxx
+  Select: 5
+  PoolSize: 10
+  Network: tcp
+
+# 文档
+Swag:
+  Title: xxx
+  Description: xxx相关接口
+  Version: 版本1.0
+  Host:
+  BasePath: /v1
+  Schemes: ["http", "https"]
+
+# 上传
+Upload:
+  Cloud: local
+  Path: assets/uploads/ # 本地路径
+  Type: [".png", ".jpeg", ".jpg", ".mp3", ".mp4", ".dmg", ".txt"]
+  MaxSize: 1000 # MB
+
+# 高德
+Amap:
+  WebServerKey: xxxxxxx
+  # 逆地理编码API服务地址
+  HostRegeo: https://restapi.amap.com/v3/geocode/regeo?key=
+  # 坐标转换
+  HostCoordinate: https://restapi.amap.com/v3/assistant/coordinate/convert?key=
+
+# Jwt
+Jwt:
+  Secret: 123456
+
+# 微信支付
+Wxpay:
+  MchId: xxxxxx # 商家账号
+  CertificateSerialNo: xxxxxx # 商户证书序列号
+  MchAPIv3Key: xxxxxx # 商户APIv3密钥
+  PrivateKey: cert/wepay/apiclient_key.pem # 商户私钥路径
+  AuthIpPay: ["::1", "127.0.0.1"] # 内网支付ip限制，支付回调除外
+  # 认养小程序支付
+  FosterPay:
+    AppId: xxxxxx
+    Currency: CNY
+    NotifyUrl: https://xxxxxx/wxpay/notify # 回调地址

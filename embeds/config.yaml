@@ -1,0 +1,4 @@
+# gin运行模式 debug test release
+RunMode: debug
+
+

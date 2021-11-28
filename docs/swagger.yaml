@@ -1,0 +1,43 @@
+definitions:
+  response.UserResp:
+    properties:
+      age:
+        type: integer
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /deviceKey/info:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - in: formData
+        name: age
+        required: true
+        type: integer
+      - in: formData
+        name: password
+        required: true
+        type: string
+      - in: formData
+        name: username
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: code":200,"msg":"ok","data":{"username":"111","password":"222","age":333}}
+          schema:
+            $ref: '#/definitions/response.UserResp'
+      security:
+      - ApiKeyAuth: []
+      summary: 文档信息
+      tags:
+      - Index
+swagger: "2.0"
