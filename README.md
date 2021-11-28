@@ -1,6 +1,9 @@
 # basic_framework
 ### gin基础框架
 
+### 运行
+go run main.go mode=release
+
 ### 目录
 ```
 asset 静态文件
