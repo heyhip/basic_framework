@@ -2,7 +2,14 @@
 ### gin基础框架
 
 ### 运行
-go run main.go mode=release
+```
+开发环境，可选mode=debug
+go run main.go
+
+生产环境，mode=release指定环境
+go build main.go
+./main mode=release
+```
 
 ### 目录
 ```
