@@ -62,6 +62,19 @@ Upload:
   Type: [".png", ".jpeg", ".jpg", ".mp3", ".mp4", ".dmg", ".txt"]
   MaxSize: 1000 # MB
 
+# 消息队列
+Amqp:
+  # 气象消息队列
+  Weather:
+    Enable: false # 是否开启
+    Address: amqps://xxx.iot-amqp.cn-shanghai.aliyuncs.com:5671
+    AccessKey: xxx # 账号key
+    AccessSecret: xxx # 账号秘钥
+    ConsumerGroupId: xxx # 消费组ID
+    ClientId: xxx.xx.xx.xx # 客户端ID，唯一标识
+    IotInstanceId: # 实例ID
+    QueueName: # 队列名称
+
 # 高德
 Amap:
   WebServerKey: xxxxxxx

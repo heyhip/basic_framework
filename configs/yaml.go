@@ -37,6 +37,9 @@ type appYaml struct {
 	// 上传
 	Upload upload `yaml:"Upload"`
 
+	// 消息队列
+	Amqp amqp `yaml:"Amqp"`
+
 	// 高德
 	Amap amap `yaml:"Amap"`
 

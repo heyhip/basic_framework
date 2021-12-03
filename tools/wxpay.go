@@ -10,6 +10,7 @@ import (
 	"github.com/wechatpay-apiv3/wechatpay-go/core/notify"
 	"github.com/wechatpay-apiv3/wechatpay-go/core/option"
 	"github.com/wechatpay-apiv3/wechatpay-go/utils"
+	"pay_manage_server/embeds"
 )
 
 var WxClient *core.Client
@@ -20,6 +21,7 @@ func init() {
 
 	// 使用 utils 提供的函数从本地文件中加载商户私钥，商户私钥会用来生成请求的签名
 	mchPrivateKey, err := utils.LoadPrivateKeyWithPath(configs.Yaml.Wxpay.PrivateKey)
+	//mchPrivateKey, err := utils.LoadPrivateKey(embeds.WePayKey)
 	if err != nil {
 		log.Panic("load merchant private key error")
 	}
