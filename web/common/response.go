@@ -1,7 +1,6 @@
-package response
+package common
 
 import (
-	"basic_framework/web/common"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -34,51 +33,51 @@ func SuccessSimple(data interface{}, c *gin.Context) {
 // 简单成功返回
 func SuccessSimpleNone(c *gin.Context) {
 	var b BaseResponse
-	b.Code = common.SUCCESS
+	b.Code = SUCCESS
 	c.JSON(http.StatusOK, b)
 }
 
 // 带数据成功返回
 func Success(data interface{}, c *gin.Context) {
-	result(common.SUCCESS, common.GetCodeMsg(common.SUCCESS, c.GetString("languages")), data, c)
+	result(SUCCESS, GetCodeMsg(SUCCESS, c.GetString("languages")), data, c)
 }
 
 // 简单成功返回
 func SuccessNone(c *gin.Context) {
-	result(common.SUCCESS, common.GetCodeMsg(common.SUCCESS, c.GetString("languages")), map[string]interface{}{}, c)
+	result(SUCCESS, GetCodeMsg(SUCCESS, c.GetString("languages")), map[string]interface{}{}, c)
 }
 
 // 带信息成功返回
 func SuccessMessage(msg string, c *gin.Context) {
-	result(common.SUCCESS, msg, map[string]interface{}{}, c)
+	result(SUCCESS, msg, map[string]interface{}{}, c)
 }
 
 // 详细成功返回
 func SuccessDetailed(data interface{}, msg string, c *gin.Context) {
-	result(common.SUCCESS, msg, data, c)
+	result(SUCCESS, msg, data, c)
 }
 
 // 带数据错误返回
 func Error(data interface{}, c *gin.Context) {
-	result(common.ERROR, common.GetCodeMsg(common.ERROR, c.GetString("languages")), data, c)
+	result(ERROR, GetCodeMsg(ERROR, c.GetString("languages")), data, c)
 }
 
 // 简单错误返回
 func ErrorNone(c *gin.Context) {
-	result(common.ERROR, common.GetCodeMsg(common.ERROR, c.GetString("languages")), map[string]interface{}{}, c)
+	result(ERROR, GetCodeMsg(ERROR, c.GetString("languages")), map[string]interface{}{}, c)
 }
 
 // 错误码错误返回
 func ErrorCode(code int, c *gin.Context) {
-	result(code, common.GetCodeMsg(code, c.GetString("languages")), map[string]interface{}{}, c)
+	result(code, GetCodeMsg(code, c.GetString("languages")), map[string]interface{}{}, c)
 }
 
 // 信息错误返回
 func ErrorMessage(msg string, c *gin.Context) {
-	result(common.ERROR, msg, map[string]interface{}{}, c)
+	result(ERROR, msg, map[string]interface{}{}, c)
 }
 
 // 信息错误返回
 func ErrorDetailed(code int, msg string, c *gin.Context) {
-	result(code, common.GetCodeMsg(code, c.GetString("languages"))+msg, map[string]interface{}{}, c)
+	result(code, GetCodeMsg(code, c.GetString("languages"))+msg, map[string]interface{}{}, c)
 }

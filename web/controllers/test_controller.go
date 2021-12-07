@@ -4,7 +4,6 @@ import (
 	"basic_framework/core/log"
 	"basic_framework/web/common"
 	"basic_framework/web/request"
-	"basic_framework/web/response"
 	"basic_framework/web/services"
 	"github.com/gin-gonic/gin"
 )
@@ -22,11 +21,11 @@ func Index(c *gin.Context) {
 	e := req.GetInfo(c)
 	if e != nil {
 		log.Error(e)
-		response.ErrorCode(common.PARAM_ERROR, c)
+		common.ErrorCode(common.PARAM_ERROR, c)
 		return
 	}
 
 	result := services.UserService{}.GetUser(req.Username, req.Password, *req.Age)
 
-	response.Success(result, c)
+	common.Success(result, c)
 }
