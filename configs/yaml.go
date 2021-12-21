@@ -26,7 +26,7 @@ type appYaml struct {
 	Log log `yaml:"Log"`
 
 	// 数据库
-	Db db `yaml:"Db"`
+	Db databases `yaml:"Databases"`
 
 	// 缓存
 	Redis redis `yaml:"Redis"`

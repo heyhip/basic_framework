@@ -1,7 +1,13 @@
 package configs
 
 // 数据库
-type db struct {
+type databases struct {
+
+	// 数据库
+	Db1 dbConfig `yaml:"Db1"`
+}
+
+type dbConfig struct {
 
 	// 类型
 	Type string `yaml:"Type"`

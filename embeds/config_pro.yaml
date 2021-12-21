@@ -28,23 +28,32 @@ Log:
   Level: debug # debug or error
 
 # 数据库
-Db:
-  Type: mysql
-  Host: 127.0.0.1
-  Username: xxx
-  Password: xxx
-  Port: 3306
-  Database: xxx
-  Prefix: xxx_
+Databases:
+  # 数据库
+  Db1:
+    Type: mysql
+    Host: xxx
+    Username: xxx
+    Password: xxx
+    Port: 3306
+    Database: xxx
+    Prefix: xxx
+    MaxIdleConns: 10 # 最大空闲连接数
+    MaxOpenConns: 10 # 最大连接数
+    MaxLifetime: 3600 # 可复用最大时间
+    SlowThreshold: 1 # 慢sql时间
+    LogLevel: 4 # 日志等级 1,2,3,4 = Silent Error Warn Info
 
 # redis
 Redis:
-  Host: 127.0.0.1
-  Port: 6379
-  Auth: xxx
-  Select: 5
-  PoolSize: 10
-  Network: tcp
+  # 任务中心
+  Db1:
+    Host: 127.0.0.1
+    Port: 6379
+    Auth: xxx
+    Select: 0
+    PoolSize: 10
+    Network: tcp
 
 # 文档
 Swag:

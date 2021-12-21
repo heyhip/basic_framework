@@ -11,12 +11,17 @@ import (
 var Orm *redis.Client
 
 func init() {
-	Orm = redis.NewClient(&redis.Options{
-		Addr:     fmt.Sprintf("%v:%v", configs.Yaml.Redis.Host, configs.Yaml.Redis.Port),
-		Password: configs.Yaml.Redis.Auth,
-		DB:       configs.Yaml.Redis.Select,
-		Network:  configs.Yaml.Redis.Network,
-		PoolSize: configs.Yaml.Redis.PoolSize,
+	// 任务中心缓存
+	Orm = initDb(fmt.Sprintf("%v:%v", configs.Yaml.Redis.Db1.Host, configs.Yaml.Redis.Db1.Port), configs.Yaml.Redis.Db1.Auth, configs.Yaml.Redis.Db1.Network, configs.Yaml.Redis.Db1.Select, configs.Yaml.Redis.Db1.PoolSize)
+}
+
+func initDb(addr, password, network string, db, poolSize int) *redis.Client {
+	return redis.NewClient(&redis.Options{
+		Addr:     addr,
+		Password: password,
+		DB:       db,
+		Network:  network,
+		PoolSize: poolSize,
 	})
 }
 
