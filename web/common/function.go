@@ -53,10 +53,10 @@ func ValidationPara(obj interface{}) error {
 //@author:
 //@function: SliceContainsString
 //@description: 切片是否包含元素
-//@param: items []string
-//@param: item string
+//@param: items []T
+//@param: item T
 //@return: bool
-func SliceContainsString(items []string, item string) bool {
+func SliceContains[T int | uint64 | string | float64](items []T, item T) bool {
 	for _, i := range items {
 		if i == item {
 			return true
@@ -129,47 +129,13 @@ func GetPage(page int, limit int) int {
 }
 
 //@author:
-//@function: SliceUniqueInt
+//@function: SliceUnique
 //@description: 去除slice重复元素
-//@param: s []int
-//@return: []int
-func SliceUniqueInt(s []int) []int {
-	ns := make([]int, 0, len(s))
-	t := map[int]struct{}{}
-	for _, i := range s {
-		if _, ok := t[i]; !ok {
-			t[i] = struct{}{}
-			ns = append(ns, i)
-		}
-	}
-	return ns
-}
-
-//@author:
-//@function: SliceUniqueInt
-//@description: 去除slice重复元素
-//@param: s []uint64
-//@return: []uint64
-func SliceUniqueUint64(s []uint64) []uint64 {
-	ns := make([]uint64, 0, len(s))
-	t := map[uint64]struct{}{}
-	for _, i := range s {
-		if _, ok := t[i]; !ok {
-			t[i] = struct{}{}
-			ns = append(ns, i)
-		}
-	}
-	return ns
-}
-
-//@author:
-//@function: SliceUniqueInt
-//@description: 去除slice重复元素
-//@param: s []string
-//@return: []string
-func SliceUniqueString(s []string) []string {
-	ns := make([]string, 0, len(s))
-	t := map[string]struct{}{}
+//@param: s T
+//@return: T
+func SliceUnique[T int | uint64 | string | float64](s []T) []T {
+	ns := make([]T, 0, len(s))
+	t := map[T]struct{}{}
 	for _, i := range s {
 		if _, ok := t[i]; !ok {
 			t[i] = struct{}{}
@@ -211,14 +177,14 @@ func SliceToJoinString(i interface{}, s string) string {
 //@author:
 //@function: SliceChunkInt
 //@description: 将切片分割多个数组
-//@param: arr []int
+//@param: arr []T
 //@param: num int
-//@return: [][]int
-func SliceChunkInt(arr []int, num int) [][]int {
+//@return: [][]T
+func SliceChunkToArray[T int | uint64 | string | float64](arr []T, num int) [][]T {
 	max := len(arr)
 
 	if max <= num {
-		return [][]int{arr}
+		return [][]T{arr}
 	}
 
 	var quantity int
@@ -228,7 +194,7 @@ func SliceChunkInt(arr []int, num int) [][]int {
 		quantity = (max / num) + 1
 	}
 
-	var g [][]int
+	var g [][]T
 	var start, end, i int
 	for i = 1; i <= quantity; i++ {
 		end = i * num
