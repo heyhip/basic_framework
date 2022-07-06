@@ -9,6 +9,11 @@ import (
 	"time"
 )
 
+// 基础数据类型，用于泛型
+type BasisType interface {
+	int | uint64 | string | float64
+}
+
 //@author:
 //@function: ValidationPara
 //@description: 获取不同语言的错误码信息
@@ -56,7 +61,7 @@ func ValidationPara(obj interface{}) error {
 //@param: items []T
 //@param: item T
 //@return: bool
-func SliceContains[T int | uint64 | string | float64](items []T, item T) bool {
+func SliceContains[T BasisType](items []T, item T) bool {
 	for _, i := range items {
 		if i == item {
 			return true
@@ -133,7 +138,7 @@ func GetPage(page int, limit int) int {
 //@description: 去除slice重复元素
 //@param: s T
 //@return: T
-func SliceUnique[T int | uint64 | string | float64](s []T) []T {
+func SliceUnique[T BasisType](s []T) []T {
 	ns := make([]T, 0, len(s))
 	t := map[T]struct{}{}
 	for _, i := range s {
@@ -180,7 +185,7 @@ func SliceToJoinString(i interface{}, s string) string {
 //@param: arr []T
 //@param: num int
 //@return: [][]T
-func SliceChunkToArray[T int | uint64 | string | float64](arr []T, num int) [][]T {
+func SliceChunkToArray[T BasisType](arr []T, num int) [][]T {
 	max := len(arr)
 
 	if max <= num {
